@@ -1,6 +1,8 @@
 *.class
 
-threadnames.iml
+# Idea Files #
+*.iml
+.idea/
 
 # Package Files #
 *.jar
