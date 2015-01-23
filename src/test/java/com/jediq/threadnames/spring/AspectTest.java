@@ -22,7 +22,7 @@ public class AspectTest {
         String originalThreadName = Thread.currentThread().getName();
 
         assertThat(springBean.noneNameChangingMethod("myString", 256), is(originalThreadName));
-        assertThat(springBean.nameChangingMethod("myString", 256), is("Param[1]=\"myString\" Param[2]=\"256\""));
+        assertThat(springBean.nameChangingMethod("myString", 256), is("Param[0]=\"myString\" Param[1]=\"256\""));
         assertThat(springBean.noneNameChangingMethod("myString", 256), is(originalThreadName));
         assertThat(Thread.currentThread().getName(), is(originalThreadName));
     }

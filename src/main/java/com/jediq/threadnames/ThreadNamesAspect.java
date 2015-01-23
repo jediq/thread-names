@@ -30,6 +30,7 @@ public class ThreadNamesAspect {
         String newName;
         if (template.isEmpty()) {
             StringBuilder builder = new StringBuilder();
+
             int counter = -1;
             for (Object object : pjp.getArgs()) {
                 builder.append(String.format("Param[%s]=\"%s\" ", ++counter, object));
