@@ -8,9 +8,12 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 @Aspect
 public class ThreadNamesAspect {
+
+    private final transient Logger logger = Logger.getLogger(this.getClass().toString());
     
     private Formatter formatter = new Formatter();
     private ThreadLocal<String> originalNameStore = new ThreadLocal<String>();
@@ -39,7 +42,8 @@ public class ThreadNamesAspect {
         } else {
             newName = formatter.format(template, Arrays.asList(pjp.getArgs()));
         }
-        
+
+        logger.info("Renaming current thread to : " + newName);
         thread.setName(newName);
     }
 

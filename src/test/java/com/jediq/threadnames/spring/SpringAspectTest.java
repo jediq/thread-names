@@ -11,14 +11,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  *
  */
-public class AspectTest {
+public class SpringAspectTest {
+
+    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+    SpringBean springBean = applicationContext.getBean(SpringBean.class);
 
     @Test
     public void testWithoutUsingTemplate() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-
-        SpringBean springBean = applicationContext.getBean(SpringBean.class);
-
         String originalThreadName = Thread.currentThread().getName();
 
         assertThat(springBean.noneNameChangingMethod("myString", 256), is(originalThreadName));
@@ -29,10 +29,6 @@ public class AspectTest {
 
     @Test
     public void testWithUsingTemplate() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-
-        SpringBean springBean = applicationContext.getBean(SpringBean.class);
-
         String originalThreadName = Thread.currentThread().getName();
 
         assertThat(springBean.noneNameChangingMethod("myString", 256), is(originalThreadName));
